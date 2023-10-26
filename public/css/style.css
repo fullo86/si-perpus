@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    height: 100vh;
+}
+
+.sidebar {
+    background: #212529;
+    color: #fff;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    margin-left: 0;
+}
+
+.sidebar a:hover {
+    background: #000;
+    color: #fff;
+}
+
+.active {
+    background: #000;
+}
+
+.card-db {
+    padding: 20px 50px;
+}
+
+.card-db i {
+    font-size: 80px;
+}
+
+.card-desc,
+.card-count {
+    font-size: 25px;
+}
+
+.login,
+.register {
+    background: url("/images-static/bg-doodle.png");
+}

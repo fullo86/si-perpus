@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
   <div class="main d-flex flex-column justify-content-between">
@@ -30,6 +31,7 @@
                   <a href="/members" @if (request()->route()->uri == 'users') class='active' @endif>Anggota</a>
                   <a href="/logs" @if (request()->route()->uri == 'logs') class='active' @endif>Riwayat Peminjaman</a>
                   <a href="/books" @if (request()->route()->uri == 'books') class='active' @endif>Buku</a>
+                  <a href="/book/stock" @if (request()->route()->uri == 'book/stock') class='active' @endif>Stok</a>
                   <a href="/category" @if (request()->route()->uri == 'category') class='active' @endif>Kategori</a>
                 @else
                   <a href="/dashboards" @if (request()->route()->uri == 'dashboards') class='active' @endif>Dashboard</a>
@@ -64,6 +66,9 @@
           @yield('show-book')
           @yield('add-book')
           @yield('edit-book')
+
+          <!-- Stock -->
+          @yield('stock')
 
           <!-- Categories -->
           @yield('categories')          

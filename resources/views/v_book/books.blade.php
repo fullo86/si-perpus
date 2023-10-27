@@ -51,19 +51,6 @@
                         <button class="badge rounded-pill text-bg-danger border-0" onclick="return confirm('Yakin Mau Hapus?')">Hapus</button>
                     </form>
                     @endif
-                    @if ($row->status == 'out of stock')
-                    <form action="status/book/{{$row->slug}}" method="post" class="d-inline">
-                        @method('patch')
-                        @csrf
-                        <button class="badge rounded-pill text-bg-info border-0">In Stock</button>
-                    </form>
-                    @else
-                    <form action="status/book/{{$row->slug}}" method="post" class="d-inline">
-                        @method('patch')
-                        @csrf
-                        <button class="badge rounded-pill text-bg-info border-0">Out Of Stock</button>
-                    </form>                                                                
-                    @endif
               </td>
             </tr>                    
             @endforeach

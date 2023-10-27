@@ -1,7 +1,7 @@
-@extends('layouts/main')
-@section('title', 'Halaman Peminjaman')
+{{-- @extends('layouts/main')
+@section('title', 'Halaman Stock Buku')
     
-@section('activity')
+@section('stock')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <div class="row justify-content-center">
     <div class="col-12 col-md-8">
@@ -11,37 +11,33 @@
                 {{ Session::get('message') }}
             </div>
         @endif
+        {{$stockBooks}}
         <form action="/activity/save" method="post">
             @csrf
             <div class="mb-3">
-                <label for="user" class="form-label">Anggota</label>
-                <select name="user_id" id="user" class="form-control">
-                        @foreach ($listMembers as $member)
-                            @if ($member->id == Auth::user()->id)
-                                <option value="{{$member->id}}" selected @readonly(true)>{{$member->name}}</option>
-                            @endif
-                        @endforeach
-                </select>
-            </div>
-            <div class="mb-4 mt-3">
                 <label for="book" class="form-label">Buku</label>
-                <select name="book_id" id="book" class="form-control select-mdf">
+                <select name="book" id="book" class="form-control select-mdf">
                     <option value="#" selected disabled>Pilih Buku</option>
-                    @foreach ($listBooks as $book)
+                    @foreach ($stockBooks as $book)
                         <option value="{{$book->id}}">{{$book->title}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="">
+            <div class="mb-3">
+                <label for="stock" class="form-label">Stok</label>
+                <input type="text" class="form-control" name="stock" id="stock" placeholder="Masukan Jumlah Stok" required>
+            </div>
+            <div>
                 <button type="submit" class="btn btn-primary form-control">Submit</button>
             </div>
         </form>
     </div>    
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.select-mdf').select2();
     });
 </script>
-@endsection
+@endsection --}}

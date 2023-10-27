@@ -12,9 +12,6 @@
         <th scope="col">Tanggal Peminjaman</th>
         <th scope="col">Tanggal Pengembalian</th>
         <th scope="col">Tanggal Pengembalian Sebenarnya</th>
-        @if ($showNoColumn)
-          <th>Status</th>
-        @endif
       </tr>
     </thead>
     <tbody>
@@ -29,9 +26,6 @@
             <td>{{$row->rent_date}}</td>
             <td>{{$row->return_date}}</td>
             <td>{{$row->actual_return_date ? $row->actual_return_date : 'Belum Dikembalikan'}}</td>
-            @if ($showNoColumn)
-              <td>@mdo</td>
-            @endif            
           </tr>                    
         @endforeach
     </tbody>

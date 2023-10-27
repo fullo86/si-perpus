@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,9 +65,13 @@ Route::middleware('auth')->group(function() {
         Route::post('/create-book/save', [BookController::class, 'store']);
         Route::get('/edit/book/{slug}', [BookController::class, 'edit']);
         Route::put('/edit-book/update/{slug}', [BookController::class, 'update']);
-        Route::patch('/status/book/{slug}', [BookController::class, 'status']);
         Route::delete('/delete-book/{slug}', [BookController::class, 'destroy']);
-    
+
+        //Routes Stock
+        Route::get('/book/stock', [StockController::class, 'index']);
+        Route::get('/book/add-stock', [StockController::class, 'addStock']);
+        Route::post('/book/add-stock/save', [StockController::class, 'store']);
+        
         //Routes Categories
         Route::get('/category', [CategoryController::class, 'index']);
         Route::get('/create/category', [CategoryController::class, 'create']);

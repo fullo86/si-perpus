@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -44,7 +45,7 @@ class BookController extends Controller
         $result_cdbk = strtoupper($code_book);
         $data = $request->all();
         $data['image_book'] = $newName;
-        $data['book_code'] = $result_cdbk;
+        $data['book_code']  = $result_cdbk;
 
         $newData = Book::create($data);
         $newData->categories()->sync($data['categories']);
@@ -82,6 +83,7 @@ class BookController extends Controller
     
             // Menyimpan nama gambar yang baru ke dalam data yang akan diupdate
             $data['image_book'] = $newName;
+            $data['updated_at']  = Carbon::now();
         }
     
         $updateBook->update($data);
@@ -95,27 +97,6 @@ class BookController extends Controller
         return redirect('/books');
     }
     
-    public function status($slug)
-    {
-        $book = Book::where('slug', $slug)->first();
-    
-        if ($book->status != 'in stock') {
-            $book->status = 'in stock';
-            $book->save();
-    
-            Session::flash('status', 'success');
-            Session::flash('message', 'Status Buku Berhasil Diupdate');
-        } else {
-            $book->status = 'out of stock';
-            $book->save();
-
-            Session::flash('status', 'success');
-            Session::flash('message', 'Status Buku Berhasil Diupdate');
-        }
-    
-        return redirect('/books');
-    }
-
     public function listBook(Request $request)
     {
         $categories = Category::select('id', 'category_name')->get();

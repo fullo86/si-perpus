@@ -2,10 +2,6 @@
 @section('title', 'Halaman Stok Buku')
     
 @section('stock')
-<!-- Button trigger modal -->
-{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button> --}}
 <h1 class="text-center mb-5">DATA STOK BUKU</h1>
     @if (Session::has('status'))
         <div class="alert alert-success">
